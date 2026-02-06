@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 18
+VisualStudioVersion = 18.2.11408.102 d18.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IpFlags", "IpFlags\IpFlags.csproj", "{2DEE2534-EDD9-FAEE-9CA9-2A95561FA65F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2DEE2534-EDD9-FAEE-9CA9-2A95561FA65F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2DEE2534-EDD9-FAEE-9CA9-2A95561FA65F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2DEE2534-EDD9-FAEE-9CA9-2A95561FA65F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2DEE2534-EDD9-FAEE-9CA9-2A95561FA65F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D412F6E3-A2D5-42E7-A5DF-0764E51E60B7}
+	EndGlobalSection
+EndGlobal
