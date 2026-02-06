@@ -8,7 +8,9 @@
 	<OutputPath>..\..\Build</OutputPath>
 	<AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
 	<AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>
-    <ApplicationIcon>icon.ico</ApplicationIcon>
+    <ApplicationIcon Condition="'$(BuildNoIcon)' != 'true'">icon.ico</ApplicationIcon>
+    <AssemblyName Condition="'$(BuildNoIcon)' == 'true'">IpFlags_NoIco</AssemblyName>
+    <Version>1.0.0.2</Version>
   </PropertyGroup>
   <ItemGroup>
     <Content Include="icon.ico" />
