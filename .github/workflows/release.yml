@@ -39,6 +39,7 @@ jobs:
             -r win-x64 `
             --self-contained false `
             -o publish `
+            /p:SelfContained=false `
             /p:PublishSingleFile=true `
             /p:IncludeNativeLibrariesForSelfExtract=true `
             /p:PublishReadyToRun=false
@@ -50,6 +51,7 @@ jobs:
             -r win-x64 `
             --self-contained false `
             -o publish-noico `
+            /p:SelfContained=false `
             /p:BuildNoIcon=true `
             /p:PublishSingleFile=true `
             /p:IncludeNativeLibrariesForSelfExtract=true `

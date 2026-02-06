@@ -15,12 +15,13 @@
 
 ## Сборка
 
+Чтобы получить такой же маленький exe (~175 KB), как при публикации через Visual Studio (профиль FolderProfile), нужны **`--self-contained false`** и **`/p:SelfContained=false`**. Без этого SDK может собрать self-contained сборку (~140 MB). Запускайте из **корня репозитория**:
+
 ```bash
-cd Src
-dotnet publish IpFlags/IpFlags.csproj -c Release -r win-x64 --self-contained false /p:PublishSingleFile=true
+dotnet publish Src/IpFlags/IpFlags.csproj -c Release -r win-x64 --self-contained false -o Publish /p:SelfContained=false /p:PublishSingleFile=true /p:IncludeNativeLibrariesForSelfExtract=true
 ```
 
-Готовый файл будет в папке `Publish`.
+Готовый файл будет в папке `Publish`. На целевой машине должен быть установлен [.NET 8](https://dotnet.microsoft.com/download/dotnet/8.0).
 
 ## Лицензия
 
