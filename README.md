@@ -6,12 +6,12 @@
 
 ![Иконка в трее](Assets/1.png)
 
-![Меню и обновление](Assets/2.png)
+![Иконка в трее](Assets/2.png)
 
 ## Требования
 
 - Windows
-- .NET 8 (или скачайте готовый exe из [Releases](https://github.com/OWNER/IpFlags/releases) — замените `OWNER` на владельца репозитория)
+- .NET 8 (или скачайте готовый exe из [Releases](https://github.com/ElvenBless/IpFlags/releases))
 
 ## Сборка
 
