@@ -46,12 +46,21 @@ static class Program
             clickModeItem.Text = GetClickModeMenuText();
         };
         ctx.Items.Add(clickModeItem);
+        var autostartItem = new ToolStripMenuItem(GetAutostartMenuText());
+        autostartItem.Click += (_, _) =>
+        {
+            Autostart.Toggle();
+            autostartItem.Text = GetAutostartMenuText();
+        };
+        ctx.Items.Add(autostartItem);
         ctx.Items.Add("Update", null, (_, _) => UpdateIcon());
         ctx.Items.Add("Exit", null, (_, _) => Application.Exit());
+        ctx.Opening += (_, _) => autostartItem.Text = GetAutostartMenuText();
         ni.ContextMenuStrip = ctx;
 
         static string GetPollingMenuText() => AppConfig.PollingEnabled ? "Polling: On" : "Polling: Off";
         static string GetClickModeMenuText() => AppConfig.UpdateOnDoubleClick ? "Update on: Double-click" : "Update on: Click";
+        static string GetAutostartMenuText() => Autostart.IsEnabled ? "Autostart: On" : "Autostart: Off";
 
         async void UpdateIcon()
         {
