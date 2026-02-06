@@ -21,6 +21,18 @@ static class AppConfig
         }
     }
 
+    /// <summary>True = UpdateIcon on DoubleClick, False = on Click.</summary>
+    public static bool UpdateOnDoubleClick
+    {
+        get => Load().UpdateOnDoubleClick;
+        set
+        {
+            var c = Load();
+            c.UpdateOnDoubleClick = value;
+            Save(c);
+        }
+    }
+
     private static ConfigRecord Load()
     {
         try
@@ -34,7 +46,7 @@ static class AppConfig
         }
         catch { /* ignore */ }
 
-        return new ConfigRecord { PollingEnabled = true };
+        return new ConfigRecord { PollingEnabled = true, UpdateOnDoubleClick = true };
     }
 
     private static void Save(ConfigRecord record)
@@ -51,5 +63,6 @@ static class AppConfig
     private class ConfigRecord
     {
         public bool PollingEnabled { get; set; } = true;
+        public bool UpdateOnDoubleClick { get; set; } = true;
     }
 }

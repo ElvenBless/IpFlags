@@ -13,7 +13,17 @@ static class Program
         ApplicationConfiguration.Initialize();
         var flagService = new FlagImageService();
         using var ni = new NotifyIcon { Visible = true, Text = "IP → Flag" };
-        ni.DoubleClick += (_, _) => UpdateIcon();
+        void OnIconClick(object? _, EventArgs __) => UpdateIcon();
+        void BindIconClick()
+        {
+            ni.Click -= OnIconClick;
+            ni.DoubleClick -= OnIconClick;
+            if (AppConfig.UpdateOnDoubleClick)
+                ni.DoubleClick += OnIconClick;
+            else
+                ni.Click += OnIconClick;
+        }
+        BindIconClick();
 
         using var timer = new System.Windows.Forms.Timer { Interval = PollSeconds * 1000 };
         timer.Tick += (_, _) => UpdateIcon();
@@ -28,11 +38,20 @@ static class Program
             pollingItem.Text = GetPollingMenuText();
         };
         ctx.Items.Add(pollingItem);
+        var clickModeItem = new ToolStripMenuItem(GetClickModeMenuText());
+        clickModeItem.Click += (_, _) =>
+        {
+            AppConfig.UpdateOnDoubleClick = !AppConfig.UpdateOnDoubleClick;
+            BindIconClick();
+            clickModeItem.Text = GetClickModeMenuText();
+        };
+        ctx.Items.Add(clickModeItem);
         ctx.Items.Add("Update", null, (_, _) => UpdateIcon());
         ctx.Items.Add("Exit", null, (_, _) => Application.Exit());
         ni.ContextMenuStrip = ctx;
 
         static string GetPollingMenuText() => AppConfig.PollingEnabled ? "Polling: On" : "Polling: Off";
+        static string GetClickModeMenuText() => AppConfig.UpdateOnDoubleClick ? "Update on: Double-click" : "Update on: Click";
 
         async void UpdateIcon()
         {
